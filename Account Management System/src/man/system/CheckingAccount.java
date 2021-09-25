@@ -1,6 +1,5 @@
 package man.system;
 
-
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Scanner;
@@ -10,6 +9,7 @@ class CheckingAccount //opening a checking account
   public
 
   float currentBal = 0;
+
   float AmountDep = 0;
   float transactionAmount = 0;
   int Tax = 15;
@@ -94,7 +94,7 @@ class CheckingAccount //opening a checking account
        }*/
       obj.m++;
       obj.k++;
-      obj.AccountChoices();
+      obj.AccountChoices(0);
     } else {
       System.out.println("INVALID INPUT");
     }
@@ -111,21 +111,17 @@ class CheckingAccount //opening a checking account
       currentBal = currentBal - Tax; //tax deducation
       deduction = deduction + 15;
       System.out.println("Your current balance after tax deduction is: " + currentBal);
-      // obj.BalArr[obj.m]=currentBal;
-      // for(int i =0; i<obj.m; i++)
-      //{
-      // System.out.println("BALANCE ARRAY= "+obj.BalArr[i]);
-      //}
       System.out.println("==================================");
+
+      storingBalTemp(currentBal);
+
     } else {
       System.out.println("Your current balance is: " + currentBal);
-      //	 obj.BalArr[obj.m]=currentBal;
-      //	 for(int i =0; i<obj.m; i++)
-      //	 {
-      //		 System.out.println("BALANCE ARRAY= "+obj.BalArr[i]);
-      //	 }
       System.out.println("==================================");
+      storingBalTemp(currentBal);
+
     }
+
     System.out.println("Transaction done at: ");
     //Displaying date and time of transactions
     dateD = LocalDate.now();
@@ -147,6 +143,16 @@ class CheckingAccount //opening a checking account
 
   }
 
+  float storingBalTemp(float Balance) {
+    //System.out.println(Balance);
+    if (Balance > Tax) {
+      Balance = Balance - Tax;
+      return Balance;
+    } else {
+      return Balance;
+    }
+  }
+
   void makeWithdrawal() {
     System.out.println("Enter the amount you want to withdraw");
     AmountWithdraw = scint.nextFloat();
@@ -154,6 +160,7 @@ class CheckingAccount //opening a checking account
     currentBal = (float)(currentBal + obj.BalArr[obj.index]);
     if (AmountWithdraw > currentBal) {
       System.out.println("You do not have sufficient balance to withdraw this amount");
+
     } else {
 
       currentBal = currentBal - AmountWithdraw;
@@ -167,17 +174,21 @@ class CheckingAccount //opening a checking account
         //	 System.out.println("BALANCE ARRAY= "+obj.BalArr[i]);
         //}
         System.out.println("==================================");
+
       } else {
         System.out.println("Your current balance is: " + currentBal);
+
         // obj.BalArr[obj.m]=currentBal;
         //for(int i =0; i<obj.m; i++)
         //{
         //	 System.out.println("BALANCE ARRAY= "+obj.BalArr[i]);
         //}
         System.out.println("==================================");
+
       }
 
     }
+
     System.out.println("Transaction done at: ");
     dateW = LocalDate.now();
     System.out.println(dateW);

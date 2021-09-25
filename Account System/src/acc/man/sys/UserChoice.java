@@ -1,10 +1,13 @@
-package man.system;
+package acc.man.sys;
+
+
 
 /* MOATTAR ZEEST RANA
 
  * 19i-0581
  * ADVANCED PROGRAMMING-E
  */
+
 
 //libraries
 import java.util.Scanner;
@@ -37,7 +40,7 @@ class UserChoice {
   char open = 'o';
   char close = 'c';
 
-  static boolean AccountChoices(int AccNumber) {
+  static void AccountChoices() {
     //Displaying the banking managment system welcome lines
     System.out.println("=====================================Welcome to our Account Management System=========================================");
     System.out.println("1. If you want to open an account PRESS O");
@@ -86,14 +89,14 @@ class UserChoice {
     {
       System.out.println("You chose to close an account");
       System.out.println("Enter your account number");
-      AccNumber = scint.nextInt();
+      int AccNumber = scint.nextInt();
       for (int i = 0; i < 10; i++) {
         if (AccNumber == AccArr[i]) {
           AccArr[i] = 0;
         }
       }
       System.out.println("Your account has been closed successfuly");
-      AccountChoices(0);
+      AccountChoices();
 
     } else if (choice == 'l' || choice == 'L') //Logging in 
     {
@@ -106,27 +109,24 @@ class UserChoice {
       if (acctype == 'A' || acctype == 'a') {
         System.out.println("Enter your 4 digit account number to login");
 
-        AccNumber = scint.nextInt();
+        int AccNumber = scint.nextInt();
         tempAcc = AccNumber;
         for (int i = 0; i < 10; i++) {
           if (AccNumber == AccArr[i]) {
             index = i;
             System.out.println("Opening your Checking Account");
-
-            //  System.out.println(true);
             obj.menu();
 
           } else {
-            return false;
+
           }
 
         }
-
         System.out.println("No such account number in bank record");
       } else if (acctype == 'b' || acctype == 'B') {
         System.out.println("Enter your 4 digit account number to login");
-
-        AccNumber = scint.nextInt();
+        
+        int AccNumber = scint.nextInt();
         for (int i = 0; i < 1; i++) {
           if (AccNumber == AccArr[i]) {
             index = i;
@@ -151,14 +151,14 @@ class UserChoice {
       System.out.println("You have entered invalid choice");
 
     }
-    return true;
-  }
 
+  }
   public static void main(String args[]) {
-    AccountChoices(0);
+    AccountChoices();
   }
 
 }
 //*******************************************************************************************************************************************************************************
 
 //****************************************************************************************************************************************************************************
+
